@@ -7,7 +7,7 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 
 const page = async ({ params }: RouteParams) => {
-  const { id } = params;
+  const { id } = await params;
   const interview = await getInterViewsById(id);
   const user = await getCurrentUser()
 
