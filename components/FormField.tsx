@@ -1,6 +1,7 @@
 import { Control, Controller, FieldValues, Path } from "react-hook-form";
 import {
   FormControl,
+  FormDescription,
   FormItem,
   FormLabel,
   FormMessage,
@@ -31,6 +32,9 @@ const FormField = ({
         <FormControl>
           <Input className="input" placeholder={placeholder} {...field} type={type}/>
         </FormControl>
+        {type === "password" &&
+        (<FormDescription>Password must be 7 characters or more</FormDescription>)
+        }
         <FormMessage />
       </FormItem>
     )}
