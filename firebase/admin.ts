@@ -1,10 +1,11 @@
-import { cert, getApps, initializeApp } from "firebase-admin/app";
+import { initializeApp, getApps, cert } from "firebase-admin/app";
 import { getAuth } from "firebase-admin/auth";
 import { getFirestore } from "firebase-admin/firestore";
 
-const initFirebaseAdmin = () => {
+// Initialize Firebase Admin SDK
+function initFirebaseAdmin() {
   const apps = getApps();
-  //Ensure only one instance is made
+
   if (!apps.length) {
     initializeApp({
       credential: cert({
@@ -19,6 +20,6 @@ const initFirebaseAdmin = () => {
     auth: getAuth(),
     db: getFirestore(),
   };
-};
+}
 
-export const {auth, db} = initFirebaseAdmin();
+export const { auth, db } = initFirebaseAdmin();

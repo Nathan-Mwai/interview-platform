@@ -1,22 +1,21 @@
-import { initializeApp,getApp, getApps } from "firebase/app";
+import { getApp, getApps, initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDIer5ZllwofoVqgpr-SI-zzthLoJ12jxE",
-  authDomain: "mishiwise.firebaseapp.com",
-  projectId: "mishiwise",
-  storageBucket: "mishiwise.firebasestorage.app",
-  messagingSenderId: "294935249102",
-  appId: "1:294935249102:web:fc13e266da24b7f6bc109f",
-  measurementId: "G-WXR6X3Q1N8"
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
-const app = !getApps.length ? initializeApp(firebaseConfig): getApp()
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+// const analytics = getAnalytics(app);
 
-export const auth = getAuth(app)
-
-export const db = getFirestore(app)
+export const auth = getAuth(app);
+export const db = getFirestore(app);
